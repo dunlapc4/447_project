@@ -12,6 +12,8 @@
 #include <Fl/gl.h>
 #include <GL/glu.h>
 #include <stdio.h>
+#include <FL/Fl_Gl_Window.H>
+#include <stdio.h>
 
 const double WorldWindow::FOV_X = 45.0;
 
@@ -35,6 +37,13 @@ WorldWindow::draw(void)
 {
     double  eye[3];
     float   color[4], dir[4];
+
+	GLfloat polygonVerts[] = {
+		20, 100, 0,
+		100, 100, 0,
+		500, 50, 0,
+		320, 10, 0
+	};
 
     if ( ! valid() )
     {
@@ -111,6 +120,7 @@ WorldWindow::draw(void)
     glLightfv(GL_LIGHT0, GL_POSITION, dir);
 
     // Draw stuff. Everything.
+	//make simpile polygon in center of screen
     ground.Draw();
     traintrack.Draw();
 }

@@ -15,6 +15,7 @@
 #include <Fl/Fl_Gl_Window.h>
 #include "Ground.h"
 #include "Track.h"
+#include "Tree.h"
 
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
