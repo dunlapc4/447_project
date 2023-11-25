@@ -17,6 +17,7 @@
 #include "Track.h"
 #include "Tree.h"
 
+#define TREE_NUM 10
 
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
 class WorldWindow : public Fl_Gl_Window {
@@ -31,6 +32,12 @@ class WorldWindow : public Fl_Gl_Window {
 	// Event handling method. Uses only mouse events.
 	int	handle(int);
 
+	void treeView();
+
+	void coasterView();
+
+	void wheelView();
+
 	// Update the world according to any events that have happened since
 	// the last time this method was called.
 	bool	Update(float);
@@ -38,6 +45,11 @@ class WorldWindow : public Fl_Gl_Window {
     private:
 	Ground	    ground;	    // The ground object.
 	Track  traintrack;	    // The train and track.
+
+	//making list of pointers to trees
+	Tree* trees1[TREE_NUM];
+	Tree* trees2[TREE_NUM];
+
 
 	static const double FOV_X; // The horizontal field of view.
 
@@ -59,6 +71,11 @@ class WorldWindow : public Fl_Gl_Window {
 	float	dist_down;  // The distance when the mouse button is pushed.
 	float	x_at_down;  // The x-coord to look at when the mouse went down.
 	float	y_at_down;  // The y-coord to look at when the mouse went down.
+
+	int tree_flag;
+	int viewFlag;
+	int wheelFlag;
+	int coasterFlag;
 
 	void	Drag(float);	// The function to call for mouse drag events
 };

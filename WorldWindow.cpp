@@ -21,6 +21,7 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 	: Fl_Gl_Window(x, y, width, height, label)
 {
     button = -1;
+	tree_flag = 0;
 
     // Initial viewing parameters.
     phi = 45.0f;
@@ -28,6 +29,13 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
     dist = 100.0f;
     x_at = 0.0f;
     y_at = 0.0f;
+
+
+	//Tree stuffs
+	int tree_height = 8;
+	int tree_base = 2;
+
+	
 
 }
 
@@ -38,7 +46,7 @@ WorldWindow::draw(void)
     double  eye[3];
     float   color[4], dir[4];
 
-	GLfloat polygonVerts[] = {
+	GLfloat polygonVerts[] = { //test of making a polygon
 		20, 100, 0,
 		100, 100, 0,
 		500, 50, 0,
@@ -97,6 +105,8 @@ WorldWindow::draw(void)
 	traintrack.Initialize();
     }
 
+	
+
     // Stuff out here relies on a coordinate system or must be done on every
     // frame.
 
@@ -122,7 +132,7 @@ WorldWindow::draw(void)
     // Draw stuff. Everything.
 	//make simpile polygon in center of screen
     ground.Draw();
-    traintrack.Draw();
+    traintrack.Draw();	
 }
 
 
