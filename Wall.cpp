@@ -78,7 +78,7 @@ bool Wall::Initialize() {
 
 	//-----------------------------------------------------
 	// top
-		glNormal3f(0.0f, 0.0f, 1.0f);
+		glNormal3f(-1.0f, 0.0f, 0.0f);
 	glTexCoord2f(0.0, 0.0); // texture
 	glVertex3f(-width / 2, length / 2, height);
 	glTexCoord2f(0.0, 1.0); // texture
@@ -89,7 +89,7 @@ bool Wall::Initialize() {
 	glVertex3f(width / 2, length / 2, height); 
 
 	//bottom
-	glNormal3f(0.0f, 0.0f, -1.0f);
+	glNormal3f(-1.0f, 0.0f, 0.0f);
 	glTexCoord2f(1.0, 0.0); //texture
 	glVertex3f(width / 2, length / 2, 0.0f); 
 	glTexCoord2f(1.0, 1.0); //texture
@@ -102,7 +102,7 @@ bool Wall::Initialize() {
 
 	// fix texture scaling issues
 
-	glNormal3f(-1.0f, 0.0f, 0.0f);
+	glNormal3f(0.0f, 0.0f, -1.0f);
 	glTexCoord2f(0.0, 0.0); // texture
 	glVertex3f(-width / 2, -length / 2, 0.0f);
 	glTexCoord2f(0.0, 1.0); // texture
@@ -112,7 +112,7 @@ bool Wall::Initialize() {
 	glTexCoord2f(1.0, 0.0); //texture
 	glVertex3f(-width / 2, length / 2, 0.0f);
 
-	glNormal3f(1.0f, 0.0f, 0.0f);
+	glNormal3f(0.0f, 0.0f, 1.0f);
 	glTexCoord2f(1.0, 0.0); //texture
 	glVertex3f(width / 2, length / 2, 0.0f);
 	glTexCoord2f(1.0, 1.0); //texture
