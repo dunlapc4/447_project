@@ -36,6 +36,13 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 	south = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
 	west = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
 
+	float theHeight = 10.0;
+	float theBase = 3.0;
+	float theTop = 3.0;
+
+
+	//(GLdouble theHeight, GLdouble theBase, GLdouble theTop, float x, float y, float z)
+
 }
 
 
@@ -100,6 +107,8 @@ WorldWindow::draw(void)
 	east->Initialize();
 	south->Initialize();
 	west->Initialize();
+
+	
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -135,6 +144,7 @@ WorldWindow::draw(void)
 
 	north->Draw();
 	south->Draw();
+
 
 
 }
