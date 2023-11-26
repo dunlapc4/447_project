@@ -92,7 +92,7 @@ Track::Initialize(void)
 
     //-------------------------------------------------
     
-    /*ubyte* image_data;
+    ubyte* image_data;
     int	    image_height, image_width;
 
     // Load the image for the texture. The texture file has to be in
@@ -128,7 +128,7 @@ Track::Initialize(void)
     // This says what to do with the texture. Modulate will multiply the
     // texture by the underlying color.
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    */
+    
     
     //-----------------------------------------------
 
