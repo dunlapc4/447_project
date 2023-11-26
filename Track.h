@@ -24,6 +24,7 @@ class Track {
     static const int	TRACK_NUM_CONTROLS;	// Constants about the track.
     static const float 	TRACK_CONTROLS[][3];
     static const float 	TRAIN_ENERGY;
+    GLuint  texture_obj;
 
   public:
     // Constructor

@@ -6,6 +6,8 @@ Wall::~Wall() {
 	if (initialized) {
 		glDeleteLists(displayList, 1);
 		gluDeleteQuadric(qobj);
+		glDeleteTextures(1, &texture_obj);
+
 	}
 }
 
@@ -88,19 +90,8 @@ bool Wall::Initialize() {
 	glTexCoord2f(1.0, 0.0); //texture
 	glVertex3f(width / 2, length / 2, height); 
 
-	/*
-	glNormal3f(-1.0f, 0.0f, 0.0f);
-	glTexCoord2f(1.0, 0.0); //texture
-	glVertex3f(width / 2, length / 2, 0.0f); 
-	glTexCoord2f(1.0, 1.0); //texture
-	glVertex3f(width / 2, -length / 2, 0.0f);
-	glTexCoord2f(0.0, 1.0); // texture
-	glVertex3f(-width / 2, -length / 2, 0.0f);
-	glTexCoord2f(0.0, 0.0); // texture
-	glVertex3f(-width / 2, length / 2, 0.0f);*/
-
-
-	// fix texture scaling issues
+	
+	
 
 	glNormal3f(0.0f, 0.0f, -1.0f);
 	glTexCoord2f(0.0, 0.0); // texture
