@@ -11,14 +11,15 @@ class Tree {
 		GLubyte display_list; 
 		GLUquadric* qobj;
 		GLdouble height;
-		GLdouble base;
-		//GLdouble   baseRadius;
-		//GLdouble   topRadius;
+		
+		GLdouble   base;
+		//GLdouble   top;
 
 
 	public:
 		//Tree();
 		~Tree();
+		Tree(GLdouble myHeight, GLdouble myBase, float x, float y, float z);
 		Tree(void);
 
 	

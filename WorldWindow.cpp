@@ -32,10 +32,26 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 
 
 	//Tree stuffs
-	int tree_height = 8;
-	int tree_base = 2;
+	int treeHeight = 8;
+	int treeBase = 2;
+	int treeRandHeightSeed = 5;
+	int treeRandBaseSeed = 2;
 
-	
+	for (int i = 0; i < TREE_NUM; ++i) {
+		int rand1 = (rand() % 100);
+		int rand2 = (rand() % 10);
+		int x = -50.0f + rand1;
+		int y = -50.0f + rand2;
+		int heightRand = rand() % treeRandHeightSeed;
+		int baseRand = rand() % treeRandBaseSeed;
+		trees1[i] = new Tree(treeHeight+heightRand, treeBase+baseRand, x, y, 0.0f);
+	}
+
+	for (int j = 0; j < TREE_NUM; ++j) {
+		int heightRand = rand() % treeRandHeightSeed;
+		int baseRand = rand() % treeRandBaseSeed;
+		trees2[j] = new Tree(treeHeight+heightRand, treeBase+baseRand, 50.0f, 50.0f, 0.0f);
+	}
 
 }
 
@@ -46,12 +62,7 @@ WorldWindow::draw(void)
     double  eye[3];
     float   color[4], dir[4];
 
-	GLfloat polygonVerts[] = { //test of making a polygon
-		20, 100, 0,
-		100, 100, 0,
-		500, 50, 0,
-		320, 10, 0
-	};
+	
 
     if ( ! valid() )
     {
@@ -103,6 +114,11 @@ WorldWindow::draw(void)
 	// Initialize all the objects.
 	ground.Initialize();
 	traintrack.Initialize();
+
+	for (int i = 0; i < TREE_NUM; ++i) {
+		trees1[i]->Initialize();
+		trees2[i]->Initialize();
+		}
     }
 
 	
@@ -132,7 +148,15 @@ WorldWindow::draw(void)
     // Draw stuff. Everything.
 	//make simpile polygon in center of screen
     ground.Draw();
-    traintrack.Draw();	
+    traintrack.Draw();
+	/*GLUquadricObj* quadratic;
+	quadratic = gluNewQuadric();
+	glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+	gluCylinder(quadratic, 0.1f, 0.1f, 3.0f, 32, 32);*/
+	for (int j = 0; j < TREE_NUM; ++j) {
+		trees1[j]->Draw();
+		trees2[j]->Draw();
+	}
 }
 
 
