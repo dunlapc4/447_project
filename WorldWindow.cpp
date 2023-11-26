@@ -27,6 +27,15 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
     x_at = 0.0f;
     y_at = 0.0f;
 
+	int wallLength = 100;
+	int maxDist = 48;
+	int wallHeight = 8;
+	int wallWidth = 2;
+	north = new Wall(wallHeight, wallWidth, wallLength, maxDist, 0, 0);
+	east = new Wall(wallHeight, wallWidth, wallLength, maxDist, 0, 0);
+	south = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
+	west = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
+
 }
 
 
@@ -86,6 +95,11 @@ WorldWindow::draw(void)
 	// Initialize all the objects.
 	ground.Initialize();
 	traintrack.Initialize();
+
+	north->Initialize();
+	east->Initialize();
+	south->Initialize();
+	west->Initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -113,6 +127,15 @@ WorldWindow::draw(void)
     // Draw stuff. Everything.
     ground.Draw();
     traintrack.Draw();
+
+	west->Draw();
+	east->Draw();
+
+	glRotatef(90, 0, 0, 1);
+
+	north->Draw();
+	south->Draw();
+
 
 }
 

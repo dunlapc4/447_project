@@ -32,7 +32,7 @@ bool Wall::Initialize() {
 	if (!(image_data = (ubyte*)tga_load("wall.tga", &image_width,
 		&image_height, TGA_TRUECOLOR_24)))
 	{
-		fprintf(stderr, "Ground::Initialize: Couldn't load grass.tga\n");
+		fprintf(stderr, "Ground::Initialize: Couldn't load wall.tga\n");
 		return false;
 	}
 
@@ -64,7 +64,7 @@ bool Wall::Initialize() {
 	glColor3f(1.0, 1.0, 1.0);
 
 	// The surface normal is up for the ground.
-	glNormal3f(0.0, 0.0, 1.0);
+	//glNormal3f(0.0, 0.0, 1.0);
 
 	// Turn on texturing and bind the grass texture.
 	glEnable(GL_TEXTURE_2D);
@@ -77,9 +77,40 @@ bool Wall::Initialize() {
 	//I think i can use a similar but modified approach that was used in ground.cpp
 
 	//-----------------------------------------------------
+	// top
+		glNormal3f(0.0f, 0.0f, 1.0f);
+	glTexCoord2f(0.0, 0.0); // texture
+	glVertex3f(-width / 2, length / 2, height);
+	glTexCoord2f(0.0, 1.0); // texture
+	glVertex3f(-width / 2, -length / 2, height);
+	glTexCoord2f(1.0, 1.0); //texture
+	glVertex3f(width / 2, -length / 2, height);
+	glTexCoord2f(1.0, 0.0); //texture
+	glVertex3f(width / 2, length / 2, height); 
+
+	//bottom
+	glNormal3f(0.0f, 0.0f, -1.0f);
+	glTexCoord2f(1.0, 0.0); //texture
+	glVertex3f(width / 2, length / 2, 0.0f); 
+	glTexCoord2f(1.0, 1.0); //texture
+	glVertex3f(width / 2, -length / 2, 0.0f);
+	glTexCoord2f(0.0, 1.0); // texture
+	glVertex3f(-width / 2, -length / 2, 0.0f);
+	glTexCoord2f(0.0, 0.0); // texture
+	glVertex3f(-width / 2, length / 2, 0.0f);
+
+
+	// fix texture scaling issues
+
+	
 
 
 	//------------------------------------------------------
+
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	glEndList();
 
 	initialized = true;
 	return true;
@@ -89,6 +120,8 @@ void Wall::Draw() {
 	//draw the wall object
 	glPushMatrix();
 	glTranslatef(coord[0], coord[1], coord[2]);
+	//glRotatef(90, 0, 0, 1);
+
 	glCallList(displayList);
 	glPopMatrix();
 }
