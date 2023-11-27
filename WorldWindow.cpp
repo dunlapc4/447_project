@@ -36,13 +36,24 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 	south = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
 	west = new Wall(wallHeight, wallWidth, wallLength, -maxDist, 0, 0);
 
+	//values for the tree implementation 
 	float theHeight = 10.0;
 	float theBase = 3.0;
 	float theTop = 3.0;
 
 
 	//(GLdouble theHeight, GLdouble theBase, GLdouble theTop, float x, float y, float z)
-	tree = new Tree(theHeight, theBase, theTop, 0.0, 0.0, 0.0);
+	tree = new Tree(theHeight, theBase, theTop, 30.0, 20.0, 0.0); //test to see if we can actually make the tree draw
+	//since we need to make varrying forms of the trees maybe I can try an array of them or a few arrays so that they are varried groups
+	for (int i = 0; i < 10; ++i) {
+		int heightRand = rand() % 5;
+		int baseRand = rand() % 3; //I do not think I need to rand the base
+
+		int xval = -40.0f + (rand() % 100);
+		int yval = -40.0f + (rand() % 10);
+
+		trees[i] = new Tree(theHeight + heightRand, theBase, theTop+baseRand, xval, yval, 0.0f);
+	}
 }
 
 
@@ -108,6 +119,9 @@ WorldWindow::draw(void)
 	south->Initialize();
 	west->Initialize();
 	tree->initialize();
+	for (int i = 0; i < 10; ++i) {
+		trees[i]->initialize();
+	}
 
 	
     }
@@ -146,6 +160,9 @@ WorldWindow::draw(void)
 	north->Draw();
 	south->Draw();
 	tree->draw();
+	for (int i = 0; i < 10; ++i) {
+		trees[i]->draw();
+	}
 
 
 }

@@ -19,6 +19,7 @@
 #include "Tree.h"
 
 
+
 // Subclass the Fl_Gl_Window because we want to draw OpenGL in here.
 class WorldWindow : public Fl_Gl_Window {
     public:
@@ -46,6 +47,7 @@ class WorldWindow : public Fl_Gl_Window {
 	Wall* west;
 
 	Tree* tree;
+	Tree* trees[10];
 
 	static const double FOV_X; // The horizontal field of view.
 

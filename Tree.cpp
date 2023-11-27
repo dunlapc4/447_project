@@ -33,19 +33,22 @@ bool Tree::initialize() {
 	displayList = glGenLists(1);
 	glNewList(displayList, GL_COMPILE);
 
-		//now make the shapes 
+	//now make the shapes 
 
-		//trunk
-		glColor3f(0.55, 0.27, 0.07);
+	//trunk
+	glColor3f(0.55, 0.27, 0.07);
 
-		gluCylinder(qobj, baseRad, topRad, height, 10, 16);
-		glTranslatef(0.0, 0.0, height / 4);
+	gluCylinder(qobj, baseRad /2 , topRad /2, height / 3, 10, 16);
+	glTranslatef(0.0, 0.0, height);
 
-		//leaves
-		glColor3f(0.0, 0.5, 0.0);
-		glTranslatef(0.0, 0.0, height);
-		gluCylinder(qobj, baseRad * 2, 0, height, 10, 16);
+	//leaves
+	glColor3f(0.0, 0.5, 0.0);
+	glTranslatef(0.0, 0.0, height / 10);
+	for (int i = 4; i > 1; --i) {
+		gluCylinder(qobj, baseRad * 2 - ((float)i / 1.5), 0, height, 10, 16);
 		glTranslatef(0.0, 0.0, -(height / 2));
+	}
+
 
 	glEndList();
 
