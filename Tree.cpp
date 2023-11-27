@@ -44,8 +44,11 @@ bool Tree::initialize() {
 	//leaves
 	glColor3f(0.0, 0.5, 0.0);
 	glTranslatef(0.0, 0.0, height / 10);
-	for (int i = 4; i > 1; --i) {
-		gluCylinder(qobj, baseRad * 2 - ((float)i / 1.5), 0, height, 10, 16);
+	//tree currently is coming out weird and not connecting to the base. Maybe if I do it in segments it will connect. I will look into this
+	for (int i = 4; i > 1; --i) { 
+		//I need to make the base radius wider otherwise it comes out too skinny
+		//I also also I need to subtract our current 'i' value it otherwise it will become too wide
+		gluCylinder(qobj, baseRad   *2  - ((float)i), 0, height, 10, 16);
 		glTranslatef(0.0, 0.0, -(height / 2));
 	}
 
