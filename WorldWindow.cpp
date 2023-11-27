@@ -42,7 +42,7 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 
 
 	//(GLdouble theHeight, GLdouble theBase, GLdouble theTop, float x, float y, float z)
-
+	tree = new Tree(theHeight, theBase, theTop, 0.0, 0.0, 0.0);
 }
 
 
@@ -107,6 +107,7 @@ WorldWindow::draw(void)
 	east->Initialize();
 	south->Initialize();
 	west->Initialize();
+	tree->initialize();
 
 	
     }
@@ -144,7 +145,7 @@ WorldWindow::draw(void)
 
 	north->Draw();
 	south->Draw();
-
+	tree->draw();
 
 
 }
