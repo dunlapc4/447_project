@@ -11,7 +11,7 @@ Trash::~Trash() {
 
 bool Trash::initialize() {
 	//
-	initialize = true;
+	initialized = true;
 	return true;
 }
 
