@@ -17,6 +17,7 @@
 #include "Track.h"
 #include "Wall.h"
 #include "Tree.h"
+#include "trash.h"
 
 
 
@@ -48,6 +49,7 @@ class WorldWindow : public Fl_Gl_Window {
 
 	Tree* tree;
 	Tree* trees[10];
+	Trash* can;
 
 	static const double FOV_X; // The horizontal field of view.
 

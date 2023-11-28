@@ -53,6 +53,11 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		int yval = -40.0f + (rand() % 10);
 
 		trees[i] = new Tree(theHeight + heightRand, theBase, theTop+baseRand, xval, yval, 0.0f);
+
+		float trashHeight = 5.0;
+		float trashRad = 2.0;
+
+		can = new Trash(trashHeight, trashRad, xval, yval, 0.0f);
 	}
 }
 
@@ -122,7 +127,7 @@ WorldWindow::draw(void)
 	for (int i = 0; i < 10; ++i) {
 		trees[i]->initialize();
 	}
-
+	can->initialize();
 	
     }
 
@@ -164,7 +169,7 @@ WorldWindow::draw(void)
 		trees[i]->draw();
 	}
 
-
+	//can->draw();
 }
 
 

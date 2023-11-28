@@ -13,6 +13,7 @@ private:
 	bool initialized;
 	GLubyte displayList; 
 	float coord[3];
+	GLUquadric* qobj;
 	
 
 public:
