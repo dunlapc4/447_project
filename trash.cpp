@@ -51,7 +51,7 @@ bool Trash::initialize() {
 			//glVertex3f(point[i].x, point[i].y, point[i].z+base[i]);
 		}
 	}
-	glColor3f(1.0, 0.2, 0.0);
+	glColor3f(1.0, 0.9, 0.0);
 	glNormal3f(0.0, 0.0, 1.0);
 
 	for (int j = 0; j < 3; ++j) {
@@ -65,6 +65,19 @@ bool Trash::initialize() {
 		}
 	}
 	
+	glColor3f(1.0, 0.2, 0.0);
+	glNormal3f(0.0, 0.0, 1.0);
+
+	for (int j = 0; j < 6; ++j) {
+		for (int i = 0; i < 4; ++i) {
+			glVertex3f(point[i].x, point[i].y, point[i].z);
+			glVertex3f(point[i].x * base[i], point[i].y * base[i], (point[i].z + base[i]) + j);
+			glVertex3f(point[(i + 1) % 4].x * base[i], point[(i + 1) % 4].y * base[i], (point[i].z + base[i]) + j);
+			glVertex3f(point[(i + 1) % 4].x * 0.5, point[(i + 1) % 4].y * -0.5, point[i].z + 0.6);
+
+
+		}
+	}
 
 	glEnd();
 	glEndList();

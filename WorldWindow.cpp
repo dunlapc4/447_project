@@ -242,7 +242,7 @@ WorldWindow::Update(float dt)
     // Animate the train.
     traintrack.Update(dt);
 
-	ride->update(dt);
+	ride->update(dt*2);
 
     return true;
 }
