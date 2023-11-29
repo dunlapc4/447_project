@@ -56,9 +56,9 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 
 		//float trashHeight = 5.0;
 		//float trashRad = 2.0;
-		float myX[4] = { 50.0, -50.0, 50.0, -50.0 };
-		float myY[4] = { 50.0, -50.0, 50.0, -50.0 };
-		float myZ[4] = { 10.0, 10.0, 10.0, 10.0 };
+		float myX[4] = { 1.0, 1.0, -1.0, -1.0 };
+		float myY[4] = { 1.0, -1.0, -1.0, 1.0 };
+		float myZ[4] = { 0.0, 0.0, 0.0, 0.0 };
 
 		can = new Trash(myX, myY, myZ);
 	}

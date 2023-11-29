@@ -22,15 +22,24 @@ bool Trash::initialize() {
 	//gluQuadricNormals(qobj, GLU_SMOOTH);
 	displayList = glGenLists(1);
 	glNewList(displayList, GL_COMPILE);
+	//glNormal3f(1.0, 0.0, 0.0);
+
+	glColor3f(0.0, 0.0, 1.0);
+
+	float height[4] = { 0.5, 0.5, -0.5, -0.5 };
 	glBegin(GL_QUADS);  
-	for (int z = 0; z < 3; z++) {
-		for (int i = 0; i < 3; i++) {
-			glVertex3f(point[i].x, point[i].y, z);
-			glVertex3f(point[i].x, point[i].y, z + 1);
-			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, z + 1);
-			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, z);
+	for (int j = 0; j < 3; j++) {
+		for (int i = 0; i < 4; i++) { //this works but it is too large 
+			//glNormal3f(0.0, 0.0, 1.0);
+			//glRotatef(90.0, 1.0, 0.0f, 0.0f);
+			glVertex3f(point[i].x, point[i].y, point[i].z);
+			glVertex3f(point[i].x, point[i].y, point[i].z + j);
+			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, point[i].z + j);
+			glVertex3f(point[(i + 1) % 4].x, point[(i+1)  % 4].y, point[i].z);
+			glVertex3f(point[i].x * height[i], point[i].y, point[i].z);
 		}
 	}
+	
 
 	glEnd();
 	glEndList();
