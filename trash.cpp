@@ -22,11 +22,23 @@ bool Trash::initialize() {
 	//gluQuadricNormals(qobj, GLU_SMOOTH);
 	displayList = glGenLists(1);
 	glNewList(displayList, GL_COMPILE);
-	//glNormal3f(1.0, 0.0, 0.0);
+	glNormal3f(0.0, 0.0, 1.0);
+	
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 0.1);
+	glVertex3f(1.0, 10.0, 0.0);
+	
+	glVertex3f(-1.0, 1.0, 0.0);
 
-	glColor3f(0.0, 0.0, 1.0);
+	glVertex3f(-1.0, -1.0, 0.0);
 
-	float height[4] = { 0.5, 0.5, -0.5, -0.5 };
+	glVertex3f(1.0, -1.0, 0.0);
+	glEnd();
+
+
+	glColor3f(0.2, 0.2, 0.2);
+
+	float base[4] = { 0.2, 0.2, -0.2, -0.2 };
 	glBegin(GL_QUADS);  
 	for (int j = 0; j < 3; j++) {
 		for (int i = 0; i < 4; i++) { //this works but it is too large 
@@ -36,7 +48,20 @@ bool Trash::initialize() {
 			glVertex3f(point[i].x, point[i].y, point[i].z + j);
 			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, point[i].z + j);
 			glVertex3f(point[(i + 1) % 4].x, point[(i+1)  % 4].y, point[i].z);
-			glVertex3f(point[i].x * height[i], point[i].y, point[i].z);
+			//glVertex3f(point[i].x, point[i].y, point[i].z+base[i]);
+		}
+	}
+	glColor3f(1.0, 0.2, 0.0);
+	glNormal3f(0.0, 0.0, 1.0);
+
+	for (int j = 0; j < 6; ++j) {
+		for (int i = 0; i < 4; ++i) {
+			glVertex3f(point[i].x, point[i].y, point[i].z);
+			glVertex3f(point[i].x*base[i], point[i].y*base[i], (point[i].z + base[i]) +j);
+			glVertex3f(point[(i + 1) % 4].x*base[i], point[(i + 1) % 4].y*base[i], (point[i].z + base[i]) + j);
+			glVertex3f(point[(i + 1) % 4].x*base[i], point[(i + 1) % 4].y * base[i], point[i].z + base[i]);
+
+
 		}
 	}
 	
