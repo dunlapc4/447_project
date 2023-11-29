@@ -97,7 +97,7 @@ Track::Initialize(void)
 
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if (!(image_data = (ubyte*)tga_load("test_ivy.tga", &image_width,      ///the window opens then crashes
+    if (!(image_data = (ubyte*)tga_load("shuttle.tga", &image_width,     
         &image_height, TGA_TRUECOLOR_24)))
     {
         fprintf(stderr, "Ground::Initialize: Couldn't load texture.tga\n");

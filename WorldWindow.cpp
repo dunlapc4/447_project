@@ -54,10 +54,13 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 
 		trees[i] = new Tree(theHeight + heightRand, theBase, theTop+baseRand, xval, yval, 0.0f);
 
-		float trashHeight = 5.0;
-		float trashRad = 2.0;
+		//float trashHeight = 5.0;
+		//float trashRad = 2.0;
+		float myX[4] = { 50.0, -50.0, 50.0, -50.0 };
+		float myY[4] = { 50.0, -50.0, 50.0, -50.0 };
+		float myZ[4] = { 10.0, 10.0, 10.0, 10.0 };
 
-		can = new Trash(trashHeight, trashRad, xval, yval, 0.0f);
+		can = new Trash(myX, myY, myZ);
 	}
 }
 
@@ -169,7 +172,7 @@ WorldWindow::draw(void)
 		trees[i]->draw();
 	}
 
-	//can->draw();
+	can->draw();
 }
 
 

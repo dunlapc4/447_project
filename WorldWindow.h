@@ -49,6 +49,11 @@ class WorldWindow : public Fl_Gl_Window {
 
 	Tree* tree;
 	Tree* trees[10];
+
+	/*Wall* roof;
+	Wall* pillarL;
+	Wall* pillarR;*/
+
 	Trash* can;
 
 	static const double FOV_X; // The horizontal field of view.

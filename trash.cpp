@@ -1,56 +1,39 @@
 #include "trash.h"
 
 
-Trash::Trash(GLdouble theHeight, GLdouble theRad, float x, float y, float z) {
-	initialized = false;
-	displayList = 0;
-	height = theHeight;
-	rad = theRad;
-	coord[0] = x;
-	coord[1] = y;
-	coord[2] = z;
+Trash::Trash(float x[4], float y[4], float z[4]) {
+	for (int i= 0; i < 4; i++) {
+		point[i].x = x[i];
+		point[i].y = y[i];
+		point[i].z = z[i];
+	}
 }
 //make overloaded constructors one default and one input
 Trash::~Trash() {
 	if (initialized) {
 		glDeleteLists(displayList, 1);
-		gluDeleteQuadric(qobj);
+		//gluDeleteQuadric(qobj);
 	}
 }
 
 bool Trash::initialize() {
 	//this is going to initialize the object by building it from scratch and not using the glCylindar command 
-	qobj = gluNewQuadric();
-	gluQuadricNormals(qobj, GLU_SMOOTH);
+	//qobj = gluNewQuadric();
+	//gluQuadricNormals(qobj, GLU_SMOOTH);
 	displayList = glGenLists(1);
 	glNewList(displayList, GL_COMPILE);
-	//make the bin part of the can
-	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);  
+	for (int z = 0; z < 3; z++) {
+		for (int i = 0; i < 3; i++) {
+			glVertex3f(point[i].x, point[i].y, z);
+			glVertex3f(point[i].x, point[i].y, z + 1);
+			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, z + 1);
+			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, z);
+		}
+	}
 
-	gluCylinder(qobj, rad, rad, height, 5, 3);
-	glTranslatef(0.0, 0.0, height/4);
-
-	//make the rim of the can
-	glColor3f(0.0, 0.0, 1.0);
-	gluCylinder(qobj, rad /2, rad/2, 3, 5, 3);
-	glTranslatef(0.0, 0.0, height /2);
-
-
-
-	//make the top part of the can
-	glColor3f(0.0, 0.0, 0.0);
-	gluSphere(qobj, 1, 10, 5);
-	glTranslatef(0.0, 0.0, height + 2.5);
-
+	glEnd();
 	glEndList();
-
-
-	/*glBegin(GL_QUADS);
-	glNormal3f(-1.0f, 0.0f, 0.0f);
-	glVertex3f(40.0, -50.0, 0.0);
-	glVertex3f(40.0, -50.0, 3.0);
-
-	glEnd();*/
 
 	initialized = true;
 	return true;
@@ -58,7 +41,10 @@ bool Trash::initialize() {
 
 void Trash::draw() {
 	glPushMatrix();
-	glTranslatef(coord[0], coord[1], coord[2]);
+	//glTranslatef(coord[0], coord[1], coord[2]);
+	for (int i = 0; i < 4; ++i) {
+		glTranslatef(point[i].x, point[i].y, point[i].z);
+	}
 	glCallList(displayList);
 	glPopMatrix();
 }
