@@ -61,6 +61,8 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		float myZ[4] = { 0.0, 0.0, 0.0, 0.0 };
 
 		can = new Trash(myX, myY, myZ);
+
+		ride = new Wheel(-30.0, 20.0, 0.0f);
 	}
 }
 
@@ -131,6 +133,8 @@ WorldWindow::draw(void)
 		trees[i]->initialize();
 	}
 	can->initialize();
+
+	ride->initialize();
 	
     }
 
@@ -173,6 +177,8 @@ WorldWindow::draw(void)
 	}
 
 	can->draw();
+
+	ride->draw();
 }
 
 
@@ -235,6 +241,8 @@ WorldWindow::Update(float dt)
 
     // Animate the train.
     traintrack.Update(dt);
+
+	ride->update(dt);
 
     return true;
 }

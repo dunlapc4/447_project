@@ -38,10 +38,10 @@ bool Trash::initialize() {
 
 	glColor3f(0.2, 0.2, 0.2);
 
-	float base[4] = { 0.2, 0.2, -0.2, -0.2 };
+	float base[4] = { 0.2, 0.3, -0.1, -0.3 };
 	glBegin(GL_QUADS);  
 	for (int j = 0; j < 3; j++) {
-		for (int i = 0; i < 4; i++) { //this works but it is too large 
+		for (int i = 0; i < 4; i++) { 
 			//glNormal3f(0.0, 0.0, 1.0);
 			//glRotatef(90.0, 1.0, 0.0f, 0.0f);
 			glVertex3f(point[i].x, point[i].y, point[i].z);
@@ -54,7 +54,7 @@ bool Trash::initialize() {
 	glColor3f(1.0, 0.2, 0.0);
 	glNormal3f(0.0, 0.0, 1.0);
 
-	for (int j = 0; j < 6; ++j) {
+	for (int j = 0; j < 3; ++j) {
 		for (int i = 0; i < 4; ++i) {
 			glVertex3f(point[i].x, point[i].y, point[i].z);
 			glVertex3f(point[i].x*base[i], point[i].y*base[i], (point[i].z + base[i]) +j);

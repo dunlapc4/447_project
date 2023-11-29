@@ -18,6 +18,7 @@
 #include "Wall.h"
 #include "Tree.h"
 #include "trash.h"
+#include "Wheel.h"
 
 
 
@@ -55,6 +56,8 @@ class WorldWindow : public Fl_Gl_Window {
 	Wall* pillarR;*/
 
 	Trash* can;
+
+	Wheel* ride;
 
 	static const double FOV_X; // The horizontal field of view.
 
