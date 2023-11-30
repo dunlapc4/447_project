@@ -144,15 +144,26 @@ WorldWindow::draw(void)
     // Clear the screen. Color and depth.
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-    // Set up the viewing transformation. The viewer is at a distance
-    // dist from (x_at, y_ay, 2.0) in the direction (theta, phi) defined
-    // by two angles. They are looking at (x_at, y_ay, 2.0) and z is up.
-    eye[0] = x_at + dist * cos(theta * M_PI / 180.0) * cos(phi * M_PI / 180.0);
-    eye[1] = y_at + dist * sin(theta * M_PI / 180.0) * cos(phi * M_PI / 180.0);
-    eye[2] = 2.0 + dist * sin(phi * M_PI / 180.0);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(eye[0], eye[1], eye[2], x_at, y_at, 2.0, 0.0, 0.0, 1.0);
+	//MAKE THE VIEWING STUFFS HERE
+
+	//if (viewCart) {
+		//cartView();
+	//}
+	 if (viewWheel) {
+		wheelView();
+	}
+	//else {
+
+		// Set up the viewing transformation. The viewer is at a distance
+		// dist from (x_at, y_ay, 2.0) in the direction (theta, phi) defined
+		// by two angles. They are looking at (x_at, y_ay, 2.0) and z is up.
+		eye[0] = x_at + dist * cos(theta * M_PI / 180.0) * cos(phi * M_PI / 180.0);
+		eye[1] = y_at + dist * sin(theta * M_PI / 180.0) * cos(phi * M_PI / 180.0);
+		eye[2] = 2.0 + dist * sin(phi * M_PI / 180.0);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		gluLookAt(eye[0], eye[1], eye[2], x_at, y_at, 2.0, 0.0, 0.0, 1.0);
+	//}
 
     // Position the light source. This has to happen after the viewing
     // transformation is set up, so that the light stays fixed in world
@@ -180,9 +191,25 @@ WorldWindow::draw(void)
 
 	//glRotatef(90, 0, 0, 1);
 	ride->draw();
-//	ride->draw();
 }
 
+//play around and look at the other classes / functions to see how they did it
+void WorldWindow::cartView() {
+	float eye[3];
+	float posnLook[3];
+	float up[3];
+	traintrack.viewTrack(eye, posnLook, up);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(eye[0], eye[1], eye[2], posnLook[0], posnLook[1], posnLook[2], up[0], up[1], up[2]);
+}
+
+void WorldWindow::wheelView() {
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(30, 20, 10, 7, 4, 2, -30, 20, 0);
+}
+//-30.0, 20.0, 0.0f);
 
 void
 WorldWindow::Drag(float dt)
@@ -275,6 +302,21 @@ WorldWindow::handle(int event)
       case FL_RELEASE:
         button = -1;
 	return 1;
+	  case FL_KEYBOARD:
+		 // if (Fl::event_key() == 99) {
+			//  if (viewCart) {
+				//  viewCart = 0;
+			  //}
+			  //viewCart = 1;
+			  //return 1;
+		  //}
+		  if (Fl::event_key() == 119) {
+			  if (viewWheel) {
+				  viewWheel = 0;
+			  }
+			  viewWheel = 1;
+			  return 1;
+		  }
     }
 
     // Pass any other event types on the superclass.
