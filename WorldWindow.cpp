@@ -63,6 +63,8 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		can = new Trash(myX, myY, myZ);
 
 		ride = new Wheel(-30.0, 20.0, 5.0f);
+		
+		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0);
 	}
 }
 
@@ -136,6 +138,7 @@ WorldWindow::draw(void)
 
 	ride->initialize();
 	
+	wall->initialize();
     }
 
     // Stuff out here relies on a coordinate system or must be done on every
@@ -191,6 +194,7 @@ WorldWindow::draw(void)
 
 	//glRotatef(90, 0, 0, 1);
 	ride->draw();
+	wall->draw();
 }
 
 //play around and look at the other classes / functions to see how they did it

@@ -97,7 +97,7 @@ Track::Initialize(void)
 
     // Load the image for the texture. The texture file has to be in
     // a place where it will be found.
-    if (!(image_data = (ubyte*)tga_load("bird.tga", &image_width,     
+    if (!(image_data = (ubyte*)tga_load("bird.tga", &image_width,
         &image_height, TGA_TRUECOLOR_24)))
     {
         fprintf(stderr, "Ground::Initialize: Couldn't load texture.tga\n");
@@ -293,4 +293,3 @@ Track::Update(float dt)
     else
         speed = (float)sqrt(2.0 * (TRAIN_ENERGY - 9.81 * point[2]));
 }
-

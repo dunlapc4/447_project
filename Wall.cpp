@@ -79,8 +79,8 @@ bool Wall::Initialize() {
 	//I think i can use a similar but modified approach that was used in ground.cpp
 
 	//-----------------------------------------------------
-	
-		glNormal3f(-1.0f, 0.0f, 0.0f);
+
+	glNormal3f(-1.0f, 0.0f, 0.0f);
 	glTexCoord2f(0.0, 0.0); // texture
 	glVertex3f(-width / 2, length / 2, height);
 	glTexCoord2f(0.0, 1.0); // texture
@@ -88,10 +88,10 @@ bool Wall::Initialize() {
 	glTexCoord2f(1.0, 1.0); //texture
 	glVertex3f(width / 2, -length / 2, height);
 	glTexCoord2f(1.0, 0.0); //texture
-	glVertex3f(width / 2, length / 2, height); 
+	glVertex3f(width / 2, length / 2, height);
 
-	
-	
+
+
 
 	glNormal3f(0.0f, 0.0f, -1.0f);
 	glTexCoord2f(0.0, 0.0); // texture
@@ -113,7 +113,7 @@ bool Wall::Initialize() {
 	glTexCoord2f(0.0, 0.0); // texture
 	glVertex3f(width / 2, -length / 2, 0.0f);
 
-	
+
 	//------------------------------------------------------
 
 	glEnd();
@@ -138,19 +138,18 @@ void Wall::Draw() {
 
 //extrapolate from the following code on how to texture the wall
 /* ubyte   *image_data;
-    int	    image_height, image_width;
+	int	    image_height, image_width;
 
-    // Load the image for the texture. The texture file has to be in
-    // a place where it will be found.
-    if ( ! ( image_data = (ubyte*)tga_load("grass.tga", &image_width,
+	// Load the image for the texture. The texture file has to be in
+	// a place where it will be found.
+	if ( ! ( image_data = (ubyte*)tga_load("grass.tga", &image_width,
 					   &image_height, TGA_TRUECOLOR_24) ) )
-    {
+	{
 	fprintf(stderr, "Ground::Initialize: Couldn't load grass.tga\n");
 	return false;
-    }
+	}
 
-    // This creates a texture object and binds it, so the next few operations
-    // apply to this texture.
-    glGenTextures(1, &texture_obj);
-    glBindTexture(GL_TEXTURE_2D, texture_obj);*/
-
+	// This creates a texture object and binds it, so the next few operations
+	// apply to this texture.
+	glGenTextures(1, &texture_obj);
+	glBindTexture(GL_TEXTURE_2D, texture_obj);*/

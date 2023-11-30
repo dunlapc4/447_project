@@ -19,6 +19,7 @@
 #include "Tree.h"
 #include "trash.h"
 #include "Wheel.h"
+#include "subDiv.h"
 
 
 
@@ -51,6 +52,8 @@ class WorldWindow : public Fl_Gl_Window {
 	Wall* east;
 	Wall* south;
 	Wall* west;
+
+	subDiv* wall;
 
 	Tree* tree;
 	Tree* trees[10];
