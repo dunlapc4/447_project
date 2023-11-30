@@ -1,5 +1,6 @@
 #include <FL/gl.h>
 #include <FL/glu.h>
+#include <FL/glut.H>
 
 class Wheel {
 private:

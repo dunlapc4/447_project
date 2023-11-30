@@ -178,7 +178,9 @@ WorldWindow::draw(void)
 
 	can->draw();
 
+	//glRotatef(90, 0, 0, 1);
 	ride->draw();
+//	ride->draw();
 }
 
 
@@ -242,7 +244,7 @@ WorldWindow::Update(float dt)
     // Animate the train.
     traintrack.Update(dt);
 
-	ride->update(dt*2);
+	ride->update(dt);   ///this here is the update function for world window i put the update func for wheel here
 
     return true;
 }
