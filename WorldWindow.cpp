@@ -195,13 +195,11 @@ WorldWindow::draw(void)
 
 //play around and look at the other classes / functions to see how they did it
 void WorldWindow::cartView() {
-	float eye[3];
-	float posnLook[3];
-	float up[3];
-	traintrack.viewTrack(eye, posnLook, up);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(eye[0], eye[1], eye[2], posnLook[0], posnLook[1], posnLook[2], up[0], up[1], up[2]);
+	
+	//gotta find a way to get the values needed for viewing the track
+	//glMatrixMode(GL_MODELVIEW);
+	//glLoadIdentity();
+	return;
 }
 
 void WorldWindow::wheelView() {

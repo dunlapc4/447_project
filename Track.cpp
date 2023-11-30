@@ -294,25 +294,3 @@ Track::Update(float dt)
         speed = (float)sqrt(2.0 * (TRAIN_ENERGY - 9.81 * point[2]));
 }
 
-//play around with this to see if we can get the view we need
-void Track::viewTrack(float* eye, float* posnLook, float* up) {
-    float xCoord[3];
-    float yCoord[3];
-    float zCoord[3];
-    float posn[3];
-    track->Evaluate_Point(posn_on_track, posn);
-    track->Evaluate_Derivative(posn_on_track, yCoord);
-    Normalize_3(yCoord);
-    xCoord[0] = yCoord[1];
-    xCoord[1] = -yCoord[0];
-    xCoord[2] = 0;
-    zCoord[0] = xCoord[1] * yCoord[2] - xCoord[2] * yCoord[1];
-    zCoord[1] = xCoord[2] * yCoord[0] - xCoord[0] * yCoord[2];
-    zCoord[2] = xCoord[0] * yCoord[1] - xCoord[1] * yCoord[0];
-    for (int i = 0; i < 3; ++i) {
-        eye[i] = posn[i] * zCoord[i];
-        posnLook[i] = yCoord[i];
-        up[i] = zCoord[i];
-    }
-    return;
-}
