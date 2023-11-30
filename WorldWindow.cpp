@@ -62,7 +62,7 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 
 		can = new Trash(myX, myY, myZ);
 
-		ride = new Wheel(-30.0, 20.0, 0.0f);
+		ride = new Wheel(-30.0, 20.0, 5.0f);
 	}
 }
 

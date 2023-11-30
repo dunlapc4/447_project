@@ -26,7 +26,7 @@ bool Wheel::initialize() {
 	glNewList(displayList, GL_COMPILE);
 
 	glColor3f(0.0, 0.0, 1.0);
-
+	glRotatef(90, 1, 0, 0);
 	gluCylinder(qobj, 5, 5, 2, 9, 9);
 	glTranslatef(0.0, 0.0, 2);
 	gluDisk(qobj, 0, 5, 9, 9);
@@ -45,9 +45,10 @@ bool Wheel::initialize() {
 	glTranslatef(-9.0, 0.0, 0.0);
 	gluCylinder(qobj, 0.5, 0.5, 5, 5, 9);
 
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3f(0.0, 0.0, 1.0);
 	glTranslatef(4.5f, 0.0, 5);
 	gluDisk(qobj, 0.0, 5, 9, 9);
+	gluCylinder(qobj, 5, 5, 2, 9, 9);
 	//	glTranslatef(4.5, 0.0, 5);
 		//gluCylinder(qobj, 5, 5, 2, 9, 9);
 
@@ -64,7 +65,7 @@ bool Wheel::initialize() {
 void Wheel::draw() { //its rotating but its rotating the trees and walls and not just the wheel
 	glPushMatrix();
 	glTranslatef(coord[0], coord[1], coord[2]);
-	glRotatef(base, 0, 0, 1);
+	glRotatef(base, 0, 1, 0);
 	glCallList(displayList);
 	glPopMatrix();
 }

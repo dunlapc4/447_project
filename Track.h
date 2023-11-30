@@ -37,7 +37,8 @@ class Track {
     void    Update(float);	// Updates the location of the train
     void    Draw(void);		// Draws everything.
 
-    void viewTrack(float* eye, float* posnLook, float* up);
+    void    subDiv();
+
 };
 
 
