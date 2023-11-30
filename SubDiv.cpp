@@ -30,6 +30,15 @@ bool subDiv::initialize() {
 	glRotatef(90, 0, 1, 0);
 	//more to go
 	//I think i can use a similar but modified approach that was used in ground.cpp
+	
+
+
+	//		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0);
+	//
+
+
+	//-----------------------------------------------------
+	//glvertexf(x, y z);
 	glNormal3f(-1.0f, 0.0f, 0.0f);
 	glVertex3f(-width / 2, length / 2, height);
 	glVertex3f(-width / 2, -length / 2, height);
@@ -52,57 +61,23 @@ bool subDiv::initialize() {
 	glVertex3f(width / 2, -length / 2, 0.0f);
 
 	glNormal3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(width / 2, length / 2, 0.0f);
-	glVertex3f(width / 2, length / 2, height);
-	glVertex3f(width / 2, -length / 2, height);
-	glVertex3f(width / 2, -length / 2, 0.0f);
-	glNormal3f(0.0f, -1.0f, 0.0f);
-	glVertex3f(width / 2, length / 2, 0.0f);
-	glVertex3f(width / 2, length / 2, height);
-	glVertex3f(width / 2, -length / 2, height);
-	glVertex3f(width / 2, -length / 2, 0.0f);
+	glVertex3f(width/2, length/2, height);
+	glVertex3f(width/2, length/2, 0.0f); //back wall
+	glVertex3f(-width/2, length/2, 0.0f);
+	glVertex3f(-width/2, length/2, height);
 
-
-
-
-	/*/-----------------------------------------------------
-
-    glNormal3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.5f, 0.5f, 1.0f);
-    glVertex3f(-0.5f, 0.5f, 1.0f);
-    glVertex3f(-0.5f, -0.5f, 1.0f);
-    glVertex3f(0.5f, -0.5f, 1.0f);
-
-    glNormal3f(0.0f, 0.0f, -1.0f);
-    glVertex3f(0.5f, -0.5f, 0.0f);
-    glVertex3f(-0.5f, -0.5f, 0.0f);
-    glVertex3f(-0.5f, 0.5f, 0.0f);
-    glVertex3f(0.5f, 0.5f, 0.0f);
-
-    glNormal3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(0.5f, 0.5f, 0.0f);
-    glVertex3f(0.5f, 0.5f, 1.0f);
-    glVertex3f(0.5f, -0.5f, 1.0f);
-    glVertex3f(0.5f, -0.5f, 0.0f);
-
-    glNormal3f(-1.0f, 0.0f, 0.0f);
-    glVertex3f(-0.5f, 0.5f, 1.0f);
-    glVertex3f(-0.5f, 0.5f, 0.0f);
-    glVertex3f(-0.5f, -0.5f, 0.0f);
-    glVertex3f(-0.5f, -0.5f, 1.0f);
-
-    glNormal3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.5f, 0.5f, 1.0f);
-    glVertex3f(0.5f, 0.5f, 0.0f);
+   /* glNormal3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.5f, 0.5f, 1.0f); 
+    glVertex3f(0.5f, 0.5f, 0.0f); //back wall
     glVertex3f(-0.5f, 0.5f, 0.0f);
     glVertex3f(-0.5f, 0.5f, 1.0f);
 
     glNormal3f(0.0f, -1.0f, 0.0f);
     glVertex3f(0.5f, -0.5f, 0.0f);
-    glVertex3f(0.5f, -0.5f, 1.0f);
+    glVertex3f(0.5f, -0.5f, 1.0f); //front wall
     glVertex3f(-0.5f, -0.5f, 1.0f);
-    glVertex3f(-0.5f, -0.5f, 0.0f);
-	//------------------------------------------------------*/
+    glVertex3f(-0.5f, -0.5f, 0.0f);*/
+	//------------------------------------------------------
 
 	glEnd();
 
