@@ -1,7 +1,7 @@
 #include "subDiv.h"
 
 
-subDiv::subDiv(GLdouble theHeight, GLdouble theWidth, GLdouble theLength, float x, float y, float z){
+subDiv::subDiv(GLdouble theHeight, GLdouble theWidth, GLdouble theLength, float x, float y, float z, float ax[4], float ay[4], float az[4]) {
 	displayList = 0;
 	displayList2 = 0;
 	initialized = false;
@@ -11,6 +11,12 @@ subDiv::subDiv(GLdouble theHeight, GLdouble theWidth, GLdouble theLength, float 
 	coord[0] = x;
 	coord[1] = y;
 	coord[2] = z;
+
+	for (int i = 0; i < 4; ++i) {
+		point[i].x = ax[i];
+		point[i].y = ay[i];
+		point[i].z = az[i];
+	}
 
 }
 
@@ -30,7 +36,7 @@ bool subDiv::initialize() {
 
 	glBegin(GL_QUADS);
 	glRotatef(90, 0, 1, 0);
-	for(int i = 0; i <)
+	
 	//more to go
 	//I think i can use a similar but modified approach that was used in ground.cpp
 	
@@ -88,9 +94,16 @@ bool subDiv::initialize() {
 	glBegin(GL_QUADS);
 
 		//do subdivision of points here
-	for (int i = 0; i < 4; ++i) {
-		for (int j = 0; j < 3; ++j) {
-			//
+	//figure out how to mathmatically modify the cube i have 
+	for (int j = 0; j < 3; j++) {
+		for (int i = 0; i < 4; i++) {
+			//glNormal3f(0.0, 0.0, 1.0);
+			//glRotatef(90.0, 1.0, 0.0f, 0.0f);
+			glVertex3f(point[i].x, point[i].y, point[i].z);
+			glVertex3f(point[i].x, point[i].y, point[i].z + j);
+			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, point[i].z + j);
+			glVertex3f(point[(i + 1) % 4].x, point[(i + 1) % 4].y, point[i].z);
+			//glVertex3f(point[i].x, point[i].y, point[i].z+base[i]);
 		}
 	}
 

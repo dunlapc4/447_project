@@ -64,8 +64,11 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		can = new Trash(myX, myY, myZ);
 
 		ride = new Wheel(-30.0, 20.0, 5.0f);
-		
-		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0);
+		float ax[4] = {10, 10, -10, -10}; 
+			float ay[4] = {10, -10, -10, 10};
+		float az[4] = {2, 2, 2, 2};
+
+		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0, ax, ay, az);
 	}
 }
 
@@ -195,7 +198,8 @@ WorldWindow::draw(void)
 
 	//glRotatef(90, 0, 0, 1);
 	ride->draw();
-	wall->draw();
+
+	wall->draw(0);
 }
 
 //play around and look at the other classes / functions to see how they did it
