@@ -60,6 +60,7 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		float myY[4] = { 1.0, -1.0, -1.0, 1.0 };
 		float myZ[4] = { 0.0, 0.0, 0.0, 0.0 };
 
+		
 		can = new Trash(myX, myY, myZ);
 
 		ride = new Wheel(-30.0, 20.0, 5.0f);

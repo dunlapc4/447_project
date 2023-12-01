@@ -3,6 +3,7 @@
 
 subDiv::subDiv(GLdouble theHeight, GLdouble theWidth, GLdouble theLength, float x, float y, float z){
 	displayList = 0;
+	displayList2 = 0;
 	initialized = false;
 	height = theHeight;
 	width = theWidth;
@@ -16,6 +17,7 @@ subDiv::subDiv(GLdouble theHeight, GLdouble theWidth, GLdouble theLength, float 
 subDiv::~subDiv() {
 	if (initialized) {
 		glDeleteLists(displayList, 1);
+		glDeleteLists(displayList2, 1);
 	}
 }
 
@@ -28,14 +30,10 @@ bool subDiv::initialize() {
 
 	glBegin(GL_QUADS);
 	glRotatef(90, 0, 1, 0);
+	for(int i = 0; i <)
 	//more to go
 	//I think i can use a similar but modified approach that was used in ground.cpp
 	
-
-
-	//		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0);
-	//
-
 
 	//-----------------------------------------------------
 	//glvertexf(x, y z);
@@ -45,8 +43,7 @@ bool subDiv::initialize() {
 	glVertex3f(width / 2, -length / 2, height);
 	glVertex3f(width / 2, length / 2, height);
 
-
-
+	{}
 
 	glNormal3f(0.0f, 0.0f, -1.0f);
 	glVertex3f(-width / 2, -length / 2, 0.0f);
@@ -83,14 +80,38 @@ bool subDiv::initialize() {
 
 	glEndList();
 
+	displayList2 = glGenLists(1);
+	glNewList(displayList2, GL_COMPILE);
+	// Use white, because the texture supplies the color.
+	glColor3f(1.0, 1.0, 1.0);
+
+	glBegin(GL_QUADS);
+
+		//do subdivision of points here
+	for (int i = 0; i < 4; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			//
+		}
+	}
+
+	glEnd();
+	glEndList();
+
 	initialized = true;
 	return true;
 }
 
-void subDiv::draw() {
+void subDiv::draw(int sdVal) {
 	glPushMatrix();
 	glTranslatef(coord[0], coord[1], coord[2]);
+	if (sdVal == 1) {
+		glCallList(displayList2);
+	}
+	else {
+		glCallList(displayList);
 
-	glCallList(displayList);
+	}
 	glPopMatrix();
 }
+
+
