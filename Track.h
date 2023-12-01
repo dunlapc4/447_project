@@ -37,7 +37,7 @@ class Track {
     void    Update(float);	// Updates the location of the train
     void    Draw(void);		// Draws everything.
 
-    void    subDiv();
+    //void    subDiv();
 
 };
 

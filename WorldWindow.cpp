@@ -28,7 +28,7 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
     y_at = 0.0f;
 
 	int wallLength = 100;
-	int maxDist = 48;
+	int maxDist = 48; //I want it at or near the edge but not too far. 48 seems like a good number
 	int wallHeight = 8;
 	int wallWidth = 2;
 	north = new Wall(wallHeight, wallWidth, wallLength, maxDist, 0, 0);
@@ -47,14 +47,19 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 	//since we need to make varrying forms of the trees maybe I can try an array of them or a few arrays so that they are varried groups
 	for (int i = 0; i < 10; ++i) {
 		int heightRand = rand() % 5;
-		int baseRand = rand() % 3; //I do not think I need to rand the base
+		int baseRand = rand() % 3; //I do not think I need to rand the base. im not trying to make the trees wider just modify their height	
+			//i will keep it around just in case 
+
 
 		int xval = -40.0f + (rand() % 100);
 		int yval = -40.0f + (rand() % 10);
 
 		trees[i] = new Tree(theHeight + heightRand, theBase, theTop+baseRand, xval, yval, 0.0f);
+//i can have an array of trees and each new tree gets their defaul values and a random value added to it //and the x and y values get randed as well so they go to different location 
 
-		//float trashHeight = 5.0;
+		
+	}
+	//float trashHeight = 5.0;
 		//float trashRad = 2.0;
 		float myX[4] = { 1.0, 1.0, -1.0, -1.0 };
 		float myY[4] = { 1.0, -1.0, -1.0, 1.0 };
@@ -69,7 +74,6 @@ WorldWindow::WorldWindow(int x, int y, int width, int height, char *label)
 		float az[4] = {2, 2, 2, 2};
 
 		wall = new subDiv(10.0, 10.0, 2.0, -30, 20, 0, ax, ay, az);
-	}
 }
 
 
@@ -310,14 +314,14 @@ WorldWindow::handle(int event)
         button = -1;
 	return 1;
 	  case FL_KEYBOARD:
-		 // if (Fl::event_key() == 99) {
+		 // if (Fl::event_key() == 99) { //this breaks the program gotta revise and research how to change view to moving object
 			//  if (viewCart) {
 				//  viewCart = 0;
 			  //}
 			  //viewCart = 1;
 			  //return 1;
 		  //}
-		  if (Fl::event_key() == 119) {
+		  if (Fl::event_key() == 119) { //wanted the key press to be w for wheel but doesnt seem to work currently. ascii value is 119
 			  if (viewWheel) {
 				  viewWheel = 0;
 			  }

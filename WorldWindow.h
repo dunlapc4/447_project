@@ -89,7 +89,8 @@ class WorldWindow : public Fl_Gl_Window {
 
 	void	Drag(float);	// The function to call for mouse drag events
 
-	int viewWheel;
+	int viewWheel; //values that will be sent to a function to change the view
+	//gotta figure out how to change the view 
 	int viewCart;
 };
 

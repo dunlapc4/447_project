@@ -2,6 +2,15 @@
 #include "libtarga.h"
 
 
+Tree::Tree()
+{ 
+		displayList = 0; 
+		initialized = false; 
+		height = 10.0; 
+		baseRad = 10.0; 
+		topRad = 0.3;  
+		coord[0] = coord[1] = coord[2] = 0.0f; 
+		}
 
 Tree::Tree(GLdouble theHeight, GLdouble theBase, GLdouble theTop, float x, float y, float z) {
 
@@ -36,9 +45,10 @@ bool Tree::initialize() {
 	//now make the shapes 
 
 	//trunk
-	glColor3f(0.55, 0.27, 0.07);
+	glColor3f(0.50, 0.30, 0.07);
+	//referenced and modified from these values for brown (0.5f, 0.35f, 0.05f)
 
-	gluCylinder(qobj, baseRad /2 , topRad /2, height / 3, 10, 16);
+	gluCylinder(qobj, baseRad /2 , topRad /2, height / 3, 9, 10);
 	glTranslatef(0.0, 0.0, height);
 
 	//leaves
@@ -48,8 +58,9 @@ bool Tree::initialize() {
 	for (int i = 4; i > 1; --i) { 
 		//I need to make the base radius wider otherwise it comes out too skinny
 		//I also also I need to subtract our current 'i' value it otherwise it will become too wide
-		gluCylinder(qobj, baseRad   *2  - ((float)i), 0, height, 10, 16);
-		glTranslatef(0.0, 0.0, -(height / 2));
+		gluCylinder(qobj, baseRad   *2  - ((float)i), 0, height, 9, 10);
+		//i cannot just have the base Radius widen it needs to be modified by something i think
+		glTranslatef(0.0, 0.0, -(height / 2)); //move down to the next part 
 	}
 
 

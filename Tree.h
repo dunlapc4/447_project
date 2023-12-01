@@ -16,7 +16,7 @@ private:
 
 public: 
 
-	Tree() { displayList = 0; initialized = false; height = 10.0; baseRad = 10.0; topRad = 0.3;  coord[0] = coord[1] = coord[2] = 0.0f; }
+	Tree();
 	Tree(GLdouble theHeight, GLdouble theBase, GLdouble theTop, float x, float y, float z);
 	~Tree();
 

@@ -8,12 +8,11 @@ private:
 	GLubyte displayList;
 	GLUquadric* qobj;
 	double base;
-	double top;
 	float coord[3];
 
 
 public:
-	Wheel() { displayList = 0; initialized = false; coord[0] = coord[1] = coord[2]; }
+	Wheel();
 	Wheel(float x, float y, float z);
 	~Wheel();
 

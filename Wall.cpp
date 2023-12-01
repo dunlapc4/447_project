@@ -2,6 +2,17 @@
 #include "libtarga.h"
 #include <stdio.h>
 
+
+Wall::Wall(){
+	 displayList = 0;  
+	 initialized = false;
+	  height = 20.0; 
+	  width = 20.0; 
+	  length = 20.0; 
+	  coord[0] = coord[1] = coord[2] = 0.0f;
+}
+
+
 Wall::~Wall() {
 	if (initialized) {
 		glDeleteLists(displayList, 1);
@@ -78,43 +89,51 @@ bool Wall::Initialize() {
 	//more to go
 	//I think i can use a similar but modified approach that was used in ground.cpp
 
-	//-----------------------------------------------------
+	
+
+
+	//I need to lessen the length and width that I input in this otherwise it seems to come out funny
+	//play around with modifying the values that were passed in from WorldWindow.cpp it could help me understand the glVertexf function and vertext plotting 
+	//better
+
+	//vertex (x, y, z)
+//x would be the width 
+//y would be the length 
+//z is how hight it goes
 
 	glNormal3f(-1.0f, 0.0f, 0.0f);
-	glTexCoord2f(0.0, 0.0); // texture
+	glTexCoord2f(0.0, 0.0); 
 	glVertex3f(-width / 2, length / 2, height);
-	glTexCoord2f(0.0, 1.0); // texture
+	glTexCoord2f(0.0, 2.0);
 	glVertex3f(-width / 2, -length / 2, height);
-	glTexCoord2f(1.0, 1.0); //texture
+	glTexCoord2f(2.0, 2.0); 
 	glVertex3f(width / 2, -length / 2, height);
-	glTexCoord2f(1.0, 0.0); //texture
+	glTexCoord2f(2.0, 0.0); 
 	glVertex3f(width / 2, length / 2, height);
-
-
 
 
 	glNormal3f(0.0f, 0.0f, -1.0f);
-	glTexCoord2f(0.0, 0.0); // texture
+	glTexCoord2f(0.0, 0.0); 
 	glVertex3f(-width / 2, -length / 2, 0.0f);
-	glTexCoord2f(0.0, 1.0); // texture
+	glTexCoord2f(0.0, 2.0); 
 	glVertex3f(-width / 2, -length / 2, height);
-	glTexCoord2f(1.0, 1.0); //texture
+	glTexCoord2f(2.0, 2.0); 
 	glVertex3f(-width / 2, length / 2, height);
-	glTexCoord2f(1.0, 0.0); //texture
+	glTexCoord2f(2.0, 0.0); 
 	glVertex3f(-width / 2, length / 2, 0.0f);
 
 	glNormal3f(0.0f, 0.0f, 1.0f);
-	glTexCoord2f(1.0, 0.0); //texture
+	glTexCoord2f(2.0, 0.0); 
 	glVertex3f(width / 2, length / 2, 0.0f);
-	glTexCoord2f(1.0, 1.0); //texture
+	glTexCoord2f(2.0, 2.0); 
 	glVertex3f(width / 2, length / 2, height);
-	glTexCoord2f(0.0, 1.0); // texture
+	glTexCoord2f(0.0, 2.0); 
 	glVertex3f(width / 2, -length / 2, height);
-	glTexCoord2f(0.0, 0.0); // texture
+	glTexCoord2f(0.0, 0.0); 
 	glVertex3f(width / 2, -length / 2, 0.0f);
 
-
-	//------------------------------------------------------
+//it seems like dividing it by 2 works well. there is some slight overlap but it works 
+	
 
 	glEnd();
 	glDisable(GL_TEXTURE_2D);

@@ -55,7 +55,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\code\fltk_2022_1.3.8;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\\thoth.cecs.pdx.edu\Home05\conor4\Desktop\447_project</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;FL_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -67,7 +67,7 @@
     <Link>
       <AdditionalDependencies>fltkd.lib;opengl32.lib;glu32.lib;fltkgld.lib;wsock32.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Project.exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\code\fltk_2022_1.3.8\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>\\thoth.cecs.pdx.edu\Home05\conor4\Desktop\447_project\lib</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)Project3.pdb</ProgramDatabaseFile>
@@ -105,7 +105,12 @@
     <ClCompile Include="GenericException.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="libtarga.c" />
+    <ClCompile Include="SubDiv.cpp" />
     <ClCompile Include="Track.cpp" />
+    <ClCompile Include="trash.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Wheel.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldWindow.cpp" />
   </ItemGroup>
@@ -114,7 +119,12 @@
     <ClInclude Include="GenericException.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="libtarga.h" />
+    <ClInclude Include="subDiv.h" />
     <ClInclude Include="Track.h" />
+    <ClInclude Include="trash.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Wheel.h" />
     <ClInclude Include="WorldWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

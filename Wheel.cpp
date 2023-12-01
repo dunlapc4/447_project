@@ -1,6 +1,12 @@
 #include "Wheel.h"
 
 
+Wheel::Wheel(){
+	  displayList = 0;
+	  initialized = false; 
+	  coord[0] = coord[1] = coord[2]; 
+}
+
 Wheel::Wheel(float x, float y, float z) {
 	displayList = 0;
 	initialized = false;
@@ -24,18 +30,16 @@ bool Wheel::initialize() {
 
 	displayList = glGenLists(1);
 	glNewList(displayList, GL_COMPILE);
-
-	glColor3f(1.0, 0.0, 0.0);
+//i want to make a wheel with cylinders on the sides and bars in the center so its easier to see it moving
 	glRotatef(90, 1, 0, 0);
-	//glTranslatef(4.5, 0.0, 0.0);
-	gluDisk(qobj, 0, 4, 5, 5);
+	//glTranslatef(4.5, 0.0, 0.0); 
 	glColor3f(0.0, 0.0, 1.0);
 
-	gluCylinder(qobj, 5, 5, 2, 9, 9);
+	gluCylinder(qobj, 5, 5, 2, 9, 9); //make the cylinder for side
 	glTranslatef(0.0, 0.0, 2);
-	gluDisk(qobj, 0, 5, 9, 9);
+	gluDisk(qobj, 0, 5, 9, 9);//make the first disk
 
-	glTranslatef(0.0, 4.5f, 0.0);
+	glTranslatef(0.0, 4.5f, 0.0); //make the bars for this i will keep it at 4 to keep it simple
 	glColor3f(0.0, 0.0, 0.0);
 	gluCylinder(qobj, 0.5, 0.5, 5, 5, 9);
 
@@ -50,11 +54,9 @@ bool Wheel::initialize() {
 	gluCylinder(qobj, 0.5, 0.5, 5, 5, 9);
 
 	glColor3f(0.0, 0.0, 1.0);
-	glTranslatef(4.5f, 0.0, 5);
+	glTranslatef(4.5f, 0.0, 4.5); //make the disk on the other end
 	gluDisk(qobj, 0.0, 5, 9, 9);
-	//gluCylinder(qobj, 5, 5, 2, 9, 9);
-	//	glTranslatef(4.5, 0.0, 5);
-		//gluCylinder(qobj, 5, 5, 2, 9, 9);
+	//going to cover the original side up with some type of cube or support structure. Planning to try to do subdivision on that one 
 
 	glEndList();
 
@@ -77,7 +79,6 @@ void Wheel::draw() { //its rotating but its rotating the trees and walls and not
 
 void Wheel::update(float updateVal) {
 	base += updateVal * 10;
-	top += updateVal * 2.0f;
 }
 
 
